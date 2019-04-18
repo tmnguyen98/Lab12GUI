@@ -11,9 +11,12 @@ public class DormMealWindow extends JFrame {
     private JComboBox Mealdropdown;
     private JPanel panel1;
     private JPanel panel2;
-    private JLabel label;
+    private JPanel panel3;
+    private JLabel label = new JLabel();
     private final int WINDOW_WIDTH = 400;	// Window width
     private final int WINDOW_HEIGHT = 100;	// Window height
+    private int dormprice;
+    private int mealprice;
 
     public DormMealWindow() {
         // Set the title bar text
@@ -35,18 +38,21 @@ public class DormMealWindow extends JFrame {
     private void buildPanel() {
         // Create dropdown and text stuff
         String[] dorms = {"Plymouth", "Commonwealth", "Gateway", "Southwood"};
-        String[] mealplan = {"7 meals per week ", "14 meals per week", "Unlimited meal"};
+        String[] mealplan = {"7 meals per week", "14 meals per week", "Unlimited meal"};
         Dormdropdown = new JComboBox(dorms);
         Mealdropdown = new JComboBox(mealplan);
-        //dropdown.addActionListener(new DropdownListener());
+        Dormdropdown.addActionListener(new DropdownListener());
+        Mealdropdown.addActionListener(new DropdownListener());
         panel1 = new JPanel();
         panel2 = new JPanel();
+        panel3 = new JPanel();
         panel1.add(Dormdropdown);
         panel2.add(Mealdropdown);
-        //add(label);
+        panel3.add(label);
 
         add(panel1, BorderLayout.EAST);
         add(panel2, BorderLayout.WEST);
+        add(panel3, BorderLayout.SOUTH);
     }
 
     public static void main(String[] args) {
@@ -57,13 +63,40 @@ public class DormMealWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == Dormdropdown) {
+        	if ( e.getSource() == Dormdropdown) {
+        		JComboBox item = (JComboBox) e.getSource();
+                String message = (String) item.getSelectedItem();
+                switch (message) {
+                    case "Plymouth": 
+                    	dormprice = 1200;
+                    	break;
+                    case "Commonwealth": 
+                    	dormprice = 1500;
+                    	break;
+                    case "Gateway": 
+                    	dormprice = 1600;
+                    	break;
+                    case "Southwood": 
+                    	dormprice = 1800;
+                    	break;
+                }
+			} else {
                 JComboBox item = (JComboBox) e.getSource();
                 String message = (String) item.getSelectedItem();
                 switch (message) {
-                    case "Pymouth": label.setText("");
+                    case "7 meals per week": 
+                    	mealprice = 1200;
+                    	break;
+                    case "14 meals per week": 
+                        mealprice = 1500;
+                    	break;
+                    case "Unlimited meal": 
+                    	mealprice = 1600;
+                    	break;
                 }
-            }
+			}
+            
+        	label.setText("Total of $" + Integer.toString(dormprice + mealprice));
         }
     }
 }
