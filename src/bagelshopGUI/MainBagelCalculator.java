@@ -1,5 +1,7 @@
 package bagelshopGUI;
 
+import java.awt.BorderLayout;
+
 import javax.swing.*;
 
 public class MainBagelCalculator extends JFrame{
@@ -24,8 +26,12 @@ public class MainBagelCalculator extends JFrame{
 	}
 	
 	private void buildPanel() {
-		// TODO Auto-generated method stub
 		
+		BagelPanel bagelPanel = new BagelPanel();
+		ToppingsPanel toppingsPanel = new ToppingsPanel();
+		CoffeePanel coffeePanel = new CoffeePanel();
+		
+		add(bagelPanel, BorderLayout.WEST);
 	}
 
 	public static void main(String[] args) {
