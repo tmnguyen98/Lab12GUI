@@ -20,7 +20,7 @@ public class DormMealWindow extends JFrame {
 
     public DormMealWindow() {
         // Set the title bar text
-        setTitle("Order Calculator");
+        setTitle("Dorm Meal Plan");
 
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
