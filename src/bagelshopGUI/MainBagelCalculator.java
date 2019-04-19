@@ -22,6 +22,7 @@ public class MainBagelCalculator extends JFrame{
         buildPanel();
 
         //Display the window
+        pack();
         setVisible(true);
 	}
 	
@@ -32,6 +33,8 @@ public class MainBagelCalculator extends JFrame{
 		CoffeePanel coffeePanel = new CoffeePanel();
 		
 		add(bagelPanel, BorderLayout.WEST);
+		add(coffeePanel, BorderLayout.EAST);
+		add(toppingsPanel, BorderLayout.CENTER);
 	}
 
 	public static void main(String[] args) {

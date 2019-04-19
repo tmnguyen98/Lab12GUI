@@ -3,6 +3,7 @@ package bagelshopGUI;
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,10 +17,10 @@ public class BagelPanel extends JPanel{
 	private ButtonGroup radioButtonGroup;
 	
 	public BagelPanel() {
-		Border blackline = BorderFactory.createLineBorder(Color.BLACK);
 		JPanel smallpanel = new JPanel(); 
-		TitledBorder title = BorderFactory.createTitledBorder(blackline, "Bagel");
+		TitledBorder title = BorderFactory.createTitledBorder("Bagel");
 		smallpanel.setBorder(title);
+		smallpanel.setLayout(new BoxLayout(smallpanel, BoxLayout.Y_AXIS));
 		
 		radioButtonGroup = new ButtonGroup();
 		radioButtonGroup.add(plainButton);
