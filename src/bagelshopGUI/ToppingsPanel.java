@@ -19,12 +19,6 @@ public class ToppingsPanel extends JPanel {
 		smallpanel.setBorder(title);
 		smallpanel.setLayout(new BoxLayout(smallpanel, BoxLayout.Y_AXIS));
 		
-		ButtonGroup radioButtonGroup = new ButtonGroup();
-		radioButtonGroup.add(CreamCheeseCheckBox);
-		radioButtonGroup.add(Butter);
-		radioButtonGroup.add(Jelly);
-		radioButtonGroup.add(Jam);
-		
 		smallpanel.add(CreamCheeseCheckBox);
 		smallpanel.add(Butter);
 		smallpanel.add(Jelly);

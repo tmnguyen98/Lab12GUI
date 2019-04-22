@@ -1,6 +1,9 @@
 package bagelshopGUI;
 
+import java.awt.event.*;
+
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -13,9 +16,33 @@ public class ButtonGroupPanel extends JPanel {
     private JButton ExitButton = new JButton("Exit");
 
     public ButtonGroupPanel() {
-        smallpanel.add(CalculateButton);
+    	
+    	ExitButton.addActionListener(new ExitListener());
+    	CalculateButton.addActionListener(new CalculationListener());
+    	
+    	smallpanel.add(CalculateButton);
         smallpanel.add(ExitButton);
 
         this.add(smallpanel);
+    }
+    
+    private class ExitListener implements ActionListener {
+    	
+    	@Override
+    	public void actionPerformed(ActionEvent e) {
+    		System.exit(0);
+    	}
+    }
+    
+    private class CalculationListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			double total = BagelPanel.BagelPrice;
+			
+			// Display the conversion
+			JOptionPane.showMessageDialog(null, "total price is " + total);
+		}
+    	
     }
 }
