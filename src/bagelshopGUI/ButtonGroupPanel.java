@@ -38,7 +38,7 @@ public class ButtonGroupPanel extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			double total = BagelPanel.BagelPrice;
+			double total = BagelPanel.BagelPrice + CoffeePanel.CoffeePrice;
 			
 			// Display the conversion
 			JOptionPane.showMessageDialog(null, "total price is " + total);
