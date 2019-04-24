@@ -1,10 +1,24 @@
+/**
+ * Tuan Nguyen
+ * CS 210
+ * 4/23/2019
+ * Lab 12
+ * DormMealWindow.java
+ */
 package WNE_meal_plans;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * 
+ * The DormMealWindow class lets the user choose dorm price
+ * and meal price and then calculate the total prices.
+ *
+ */
 public class DormMealWindow extends JFrame {
 
     private JComboBox Dormdropdown;
@@ -36,13 +50,17 @@ public class DormMealWindow extends JFrame {
     }
 
     private void buildPanel() {
-        // Create dropdown and text stuff
+        // Create dorm dropdown and meal drop down
         String[] dorms = {"Plymouth", "Commonwealth", "Gateway", "Southwood"};
         String[] mealplan = {"7 meals per week", "14 meals per week", "Unlimited meal"};
         Dormdropdown = new JComboBox(dorms);
         Mealdropdown = new JComboBox(mealplan);
+        
+        // Add action to both drop down
         Dormdropdown.addActionListener(new DropdownListener());
         Mealdropdown.addActionListener(new DropdownListener());
+        
+        // Build panel and label, then add drop down to panel
         panel1 = new JPanel();
         panel2 = new JPanel();
         panel3 = new JPanel();
@@ -50,20 +68,31 @@ public class DormMealWindow extends JFrame {
         panel2.add(Mealdropdown);
         panel3.add(label);
 
+        // Add panel to GUI
         add(panel1, BorderLayout.EAST);
         add(panel2, BorderLayout.WEST);
         add(panel3, BorderLayout.SOUTH);
     }
 
+	/**
+	 * The main method creates an instance of the
+	 * MainBagelCalculator class, displaying its window.
+	 * @param args
+	 */
     public static void main(String[] args) {
         new DormMealWindow();
     }
 
+	/**
+	 * Private inner class that handles the event when
+	 * the user clicks click 1 or 2 drop down.
+	 */
     private class DropdownListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
         	if ( e.getSource() == Dormdropdown) {
+        		//Check the message to see if it's in Dorm plan
         		JComboBox item = (JComboBox) e.getSource();
                 String message = (String) item.getSelectedItem();
                 switch (message) {
@@ -81,6 +110,7 @@ public class DormMealWindow extends JFrame {
                     	break;
                 }
 			} else {
+				// Check message to see if it's in Meal plan
                 JComboBox item = (JComboBox) e.getSource();
                 String message = (String) item.getSelectedItem();
                 switch (message) {
@@ -96,6 +126,7 @@ public class DormMealWindow extends JFrame {
                 }
 			}
             
+        	// Show the label
         	label.setText("Total of $" + Integer.toString(dormprice + mealprice));
         }
     }
